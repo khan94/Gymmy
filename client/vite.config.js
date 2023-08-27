@@ -1,10 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import macrosPlugin from "vite-plugin-babel-macros";
+// import macrosPlugin from "vite-plugin-babel-macros";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [macrosPlugin(), react()],
+  plugins: [
+    // macrosPlugin(),
+    react(),
+  ],
   resolve: {
     alias: {
       src: "/src",
