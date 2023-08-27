@@ -15,10 +15,6 @@ const WorkoutList = () => {
 
   const getAllWorkouts = useCallback(async () => {
     try {
-      console.log(
-        "import.meta.env.VITE_CORE_API: ",
-        import.meta.env.VITE_CORE_API
-      );
       const res = await axios.get(
         `${import.meta.env.VITE_CORE_API}/api/workouts`
       );
