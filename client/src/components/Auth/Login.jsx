@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useState } from "react";
 import Input from "../Common/Input/Input";
 import Button from "../Common/Button/Button";
-import axios from "redaxios";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AVAILABLE_ROUTES } from "src/fixtures/routerConfig";
 

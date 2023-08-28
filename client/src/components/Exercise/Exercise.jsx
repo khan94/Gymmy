@@ -11,7 +11,7 @@ import styled from "styled-components";
 import CurrentSet from "./partials/CurrentSet/CurrentSet";
 import EditSetModal from "./partials/EditSetModal/EditSetModal";
 import ExerciseInfoModal from "./partials/ExerciseInfoModal/ExerciseInfoModal";
-import axios from "redaxios";
+import axios from "axios";
 import ConfirmDeleteModal from "../Common/ConfirmDeleteModal/ConfirmDeleteModal";
 
 const Collapse = styled.div`

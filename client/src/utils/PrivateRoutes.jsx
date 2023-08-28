@@ -2,7 +2,7 @@
 // since we are using cookies, we cannot access the jwt on the front-end, so the only way would be to redirect user on 401 error
 // otherwise need to somehow persist the token
 import { Outlet, Navigate, useNavigate } from "react-router-dom";
-import axios from "redaxios";
+import axios from "axios";
 import { toast } from "react-toastify";
 import Header from "src/components/Header/Header";
 

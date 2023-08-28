@@ -2,7 +2,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import axios from "redaxios";
+import axios from "axios";
 
 const DropdownWrapper = styled.div`
   ${({ $isOpen }) =>

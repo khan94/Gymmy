@@ -2,7 +2,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "redaxios";
+import axios from "axios";
 
 const Header = () => {
   const navigate = useNavigate();

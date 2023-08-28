@@ -1,6 +1,6 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "redaxios";
+import axios from "axios";
 import dayjs from "dayjs";
 import { useCallback, useEffect, useState } from "react";
 import Modal from "react-modal";
