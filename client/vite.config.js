@@ -11,15 +11,15 @@ export default defineConfig({
       components: "/src/components",
     },
   },
-  // server: {
-  //   port: 3000,
-  //   proxy: {
-  //     "/api": {
-  //       target: "http://localhost:6001",
-  //       changeOrigin: true,
-  //       secure: false,
-  //       ws: true,
-  //     },
-  //   },
-  // },
+  server: {
+    port: 3000,
+    proxy: {
+      "/api": {
+        target: "http://localhost:6001",
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
+    },
+  },
 });
