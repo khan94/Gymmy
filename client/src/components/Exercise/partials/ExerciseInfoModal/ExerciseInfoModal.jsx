@@ -1,26 +1,28 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from 'axios'
-import dayjs from 'dayjs'
-import { useCallback, useEffect, useState } from 'react'
-import Modal from 'react-modal'
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "redaxios";
+import dayjs from "dayjs";
+import { useCallback, useEffect, useState } from "react";
+import Modal from "react-modal";
 
 const ExerciseInfoModal = ({ exercise, onClose }) => {
-  const [prevExerciseInfo, setPrevExerciseInfo] = useState(null)
-  const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false)
+  const [prevExerciseInfo, setPrevExerciseInfo] = useState(null);
+  const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false);
 
   const getExercisePrevStats = useCallback(async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_CORE_API}/api/sets/previousSets/${exercise.id}`)
-      if (res.data.sets.length > 0) setPrevExerciseInfo(res.data)
+      const res = await axios.get(
+        `${import.meta.env.VITE_CORE_API}/api/sets/previousSets/${exercise.id}`
+      );
+      if (res.data.sets.length > 0) setPrevExerciseInfo(res.data);
     } catch (err) {
-      console.error('Error ocurred when trying to get previous ')
+      console.error("Error ocurred when trying to get previous ");
     }
-  }, [exercise.id])
+  }, [exercise.id]);
 
   useEffect(() => {
-    getExercisePrevStats()
-  }, [getExercisePrevStats])
+    getExercisePrevStats();
+  }, [getExercisePrevStats]);
 
   return (
     <Modal
@@ -45,11 +47,16 @@ const ExerciseInfoModal = ({ exercise, onClose }) => {
       </div>
       {prevExerciseInfo && (
         <div>
-          <div>Previous Results: {dayjs(prevExerciseInfo.date).format('DD MMM, YYYY')}</div>
+          <div>
+            Previous Results:{" "}
+            {dayjs(prevExerciseInfo.date).format("DD MMM, YYYY")}
+          </div>
           {prevExerciseInfo.sets.map((set, i) => (
             <div key={set.id} className="  py-1">
               <div className="flex flex-row justify-between items-center">
-                <span className="font-extrabold">SET {prevExerciseInfo.sets.length - i}:</span>
+                <span className="font-extrabold">
+                  SET {prevExerciseInfo.sets.length - i}:
+                </span>
                 <span>{set.weight} lbs</span>
                 <span>{set.reps} reps</span>
               </div>
@@ -69,13 +76,19 @@ const ExerciseInfoModal = ({ exercise, onClose }) => {
           )}
           {exercise.instructions.length > 145 && (
             <>
-              {' '}
+              {" "}
               {isInstructionsExpanded ? (
-                <span className="text-sky-600 underline" onClick={() => setIsInstructionsExpanded(false)}>
+                <span
+                  className="text-sky-600 underline"
+                  onClick={() => setIsInstructionsExpanded(false)}
+                >
                   Read less
                 </span>
               ) : (
-                <span className="text-sky-600 underline" onClick={() => setIsInstructionsExpanded(true)}>
+                <span
+                  className="text-sky-600 underline"
+                  onClick={() => setIsInstructionsExpanded(true)}
+                >
                   Read more
                 </span>
               )}
@@ -85,7 +98,7 @@ const ExerciseInfoModal = ({ exercise, onClose }) => {
       </div>
       {/* TODO: potentially might move some delete functionality in here so users don't accidentally press it */}
     </Modal>
-  )
-}
+  );
+};
 
-export default ExerciseInfoModal
+export default ExerciseInfoModal;
