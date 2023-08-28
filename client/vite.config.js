@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       src: "/src",
       components: "/src/components",
+      axios: "axios",
     },
   },
   server: {
