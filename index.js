@@ -56,8 +56,8 @@ app.use(errorHandler)
 
 process.env.NODE_ENV === 'development'
   ? https.createServer(options, app).listen(PORT, () => {
-      console.log('server is running on port: ', PORT)
+      console.log('server is running on port (dev): ', PORT)
     })
-  : https.createServer(app).listen(PORT, () => {
+  : app.listen(PORT, () => {
       console.log('server is running on port: ', PORT)
     })
