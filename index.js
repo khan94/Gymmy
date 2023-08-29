@@ -1,5 +1,7 @@
 import express from 'express'
 // import compression from "compression";
+import https from 'https'
+import fs from 'fs'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
@@ -27,10 +29,15 @@ app.use(
     credentials: true,
     // origin: "http://localhost:3000",
     // origin: "https://shimmering-cranachan-8a7432.netlify.app",
-    origin: 'https://gymmy-umber.vercel.app/',
+    origin: ['https://gymmy-umber.vercel.app/', 'https://localhost:3000'],
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
   })
 )
+
+const options = {
+  key: fs.readFileSync('localhost.key'),
+  cert: fs.readFileSync('localhost.crt'),
+}
 
 // app.use(cors())
 // app.use(compression());
@@ -43,6 +50,10 @@ app.use('/api/sets', setRouter)
 app.use(notFound)
 app.use(errorHandler)
 
-app.listen(PORT, () => {
+// app.listen(PORT, () => {
+//   console.log('server is running on port: ', PORT)
+// })
+
+https.createServer(options, app).listen(PORT, () => {
   console.log('server is running on port: ', PORT)
 })

@@ -169,7 +169,7 @@ const updateUserProfilePassword = asyncHandler(async (req, res) => {
   //   res.status(200).json({ message: 'Update User Profile' })
 })
 
-export {
+export default {
   authUser,
   registerUser,
   logoutUser,
