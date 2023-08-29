@@ -22,16 +22,17 @@ app.use(express.urlencoded({ extended: false }))
 // Set default port for express app
 const PORT = process.env.PORT || 4001
 
-// app.use(
-//   cors({
-//     credentials: true,
-//     // origin: "http://localhost:3000",
-//     // origin: "https://shimmering-cranachan-8a7432.netlify.app",
-//     origin: "https://gymmy-umber.vercel.app/",
-//   })
-// );
+app.use(
+  cors({
+    credentials: true,
+    // origin: "http://localhost:3000",
+    // origin: "https://shimmering-cranachan-8a7432.netlify.app",
+    origin: 'https://gymmy-umber.vercel.app/',
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  })
+)
 
-app.use(cors())
+// app.use(cors())
 // app.use(compression());
 
 app.use('/api/users', userRouter)
