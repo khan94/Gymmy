@@ -30,7 +30,6 @@ app.use(
     // origin: "http://localhost:3000",
     // origin: "https://shimmering-cranachan-8a7432.netlify.app",
     origin: ['https://gymmy-umber.vercel.app/', 'https://localhost:3000'],
-    methods: ['GET', 'POST', 'DELETE', 'PUT'],
   })
 )
 
