@@ -24,10 +24,8 @@ const AddExerciseDropdown = ({ isOpen, setIsOpen, handleCreateNewExercise }) => 
         headers: { 'X-Api-Key': import.meta.env.VITE_EXERCISES_API_KEY, token: undefined },
       })
       console.log('res: ', res)
-      // const res = {data: tempExercises}
       setOptions(res.data)
       // TODO: write an algorithm to collect the result and store into some localStorage, and if some of the results are already in the stored value, ignore them
-      // console.log('res: ', res)
     } catch (err) {
       if (err.response.data?.error) {
         console.error(err.response.data.error)
