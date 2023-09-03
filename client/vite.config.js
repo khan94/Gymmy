@@ -14,10 +14,10 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    https: {
-      key: './localhost.key',
-      cert: 'localhost.crt',
-    },
+    // https: {
+    //   key: './localhost.key',
+    //   cert: 'localhost.crt',
+    // },
     proxy: {
       '/api': {
         target: 'http://localhost:6001',
