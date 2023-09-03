@@ -25,13 +25,15 @@ app.use(express.urlencoded({ extended: false }))
 const PORT = process.env.PORT || 4001
 
 app.use(
-  cors()
-  //   {
-  //   credentials: true,
-  //   // origin: "http://localhost:3000",
-  //   // origin: "https://shimmering-cranachan-8a7432.netlify.app",
-  //   origin: ['https://gymmy-umber.vercel.app/', 'https://localhost:3000'],
-  // }
+  cors(
+    { credentials: true }
+    //   {
+    //   credentials: true,
+    //   // origin: "http://localhost:3000",
+    //   // origin: "https://shimmering-cranachan-8a7432.netlify.app",
+    //   origin: ['https://gymmy-umber.vercel.app/', 'https://localhost:3000'],
+    // }
+  )
 )
 
 const options = {
