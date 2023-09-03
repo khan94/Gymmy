@@ -1,12 +1,10 @@
 import asyncHandler from 'express-async-handler'
-// import User from "../models/userModel.js";
-// import generateToken from '../utils/generateToken.js'
 import { v4 as uuid } from 'uuid'
 import bcrypt from 'bcryptjs'
 import validator from 'email-validator'
 import passwordValidator from '../utils/passwordValidator.js'
 import knex from '../db.js'
-import generateToken from '../utils/generateToken.js'
+import { generateToken } from '../utils/generateToken.js'
 import matchPassword from '../utils/matchPassword.js'
 
 // @desc    Auth user/set token
@@ -18,11 +16,12 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await knex('users').where({ email: email.toLowerCase() }).first()
 
   if (user && (await matchPassword(user, password))) {
-    generateToken(res, user.id)
+    const token = generateToken(res, user.id)
     res.status(200).json({
       id: user.id,
       name: user.name,
       email: user.email,
+      token,
     })
   } else {
     throw new Error('Invalid email or password')
@@ -64,8 +63,13 @@ const registerUser = asyncHandler(async (req, res) => {
       .returning('id')
       .then((result) => {
         const id = result[0].id
-        generateToken(res, id)
-        res.status(201).json()
+        const token = generateToken(res, id)
+        res.status(201).json({
+          id,
+          name: newUser.name,
+          email: newUser.email,
+          token,
+        })
       })
     console.log('Successfully created new user')
   } catch (err) {

@@ -4,8 +4,10 @@ import asyncHandler from 'express-async-handler'
 import knex from '../db.js'
 
 const protect = asyncHandler(async (req, res, next) => {
-  let token
-  token = req.cookies.jwt
+  let token = req?.headers?.token
+
+  // INFO: if we use cookies for token, use code below
+  // token = req.cookies.jwt
 
   if (token) {
     try {

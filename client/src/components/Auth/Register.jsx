@@ -6,6 +6,7 @@ import Button from '../Common/Button/Button'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { AVAILABLE_ROUTES } from 'src/fixtures/routerConfig'
+import { LOCAL_STORAGE_TOKEN_KEY } from 'src/fixtures/localStorageKeys.js'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -21,6 +22,7 @@ const Register = () => {
         email,
         password,
       })
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, res.data.token)
       navigate('/')
     } catch (err) {
       setErrorMessage(err.response.data?.message || 'Server error, please try again.')
